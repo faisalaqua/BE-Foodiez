@@ -32,6 +32,6 @@ const UserSchema = mongoose.Schema(
   }
 );
 
-UserSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
+UserSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=username%>" });
 
 module.exports = mongoose.model("User", UserSchema);
