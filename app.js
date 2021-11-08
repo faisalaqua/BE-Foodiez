@@ -15,6 +15,7 @@ const passport = require("passport");
 
 // Required Routes
 const userRoutes = require("./apis/users/routes");
+const categoriesRoutes = require("./apis/categories/routes");
 
 connectDB();
 
@@ -31,6 +32,7 @@ passport.use(jwtStrategy);
 
 // Routes
 app.use("/api", userRoutes);
+app.use("/api/categories", categoriesRoutes);
 app.use("/media", express.static(path.join(__dirname, "media")));
 
 //
