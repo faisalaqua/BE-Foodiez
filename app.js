@@ -1,38 +1,37 @@
 const express = require("express");
 
-const connectDB = require("./db/database");
-const morgan = require("morgan");
-const logger = require("./middleware/logger");
+const connectDB = require("./db/models/database");
+// const morgan = require("morgan");
+// const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 
 // Passport Strategies
-const { localStrategy, jwtStrategy } = require("./middleware/passport");
+// const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
-const cors = require("cors");
-const path = require("path");
+// const cors = require("cors");
+// const path = require("path");
 const app = express();
-const passport = require("passport");
+// const passport = require("passport");
+
+// Required Routes
+const userRoutes = require("./apis/users/routes");
 
 connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(morgan("dev"));
-app.use(logger);
-// app.use((req, res, next) => {
-//   if (req.body.name === "Broccoli Soup")
-//     res.status(400).json({ message: "I HATE BROCCOLI!! KEEFY! " });
-//   else next();
-// });
-app.use(cors());
+// app.use(morgan("dev"));
+// app.use(logger);
+// app.use(cors());
 
 // Passport Setup
-app.use(passport.initialize());
-passport.use(localStrategy);
-passport.use(jwtStrategy);
-// Routes
+// app.use(passport.initialize());
+// passport.use(localStrategy);
+// passport.use(jwtStrategy);
 
-app.use("/media", express.static(path.join(__dirname, "media")));
+// Routes
+app.use("/api", userRoutes);
+// app.use("/media", express.static(path.join(__dirname, "media")));
 
 //
 
