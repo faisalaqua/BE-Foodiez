@@ -25,7 +25,6 @@ const UserSchema = mongoose.Schema(
     },
     firstName: { type: String },
     lastName: { type: String },
-    image: { type: String },
   },
   {
     timestamps: true,

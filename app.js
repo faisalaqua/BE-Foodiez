@@ -8,7 +8,7 @@ const errorHandler = require("./middleware/errorHandler");
 // Passport Strategies
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
-// const cors = require("cors");
+const cors = require("cors");
 const path = require("path");
 const app = express();
 const passport = require("passport");
@@ -24,7 +24,7 @@ connectDB();
 app.use(express.json());
 // app.use(morgan("dev"));
 app.use(logger);
-// app.use(cors());
+app.use(cors());
 
 // Passport Setup
 app.use(passport.initialize());
