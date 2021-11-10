@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
+
 const {
   createCategory,
   fetchCategory,
   fetchCategories,
+  createRecipe,
 } = require("./controllers");
 
 // router.param("categoryId", async (req, res, next, categoryId) => {
@@ -20,5 +23,10 @@ const {
 router.get("/:categoryId", fetchCategory);
 router.get("/", fetchCategories);
 router.post("/", createCategory);
+router.post(
+  "/:categoryId/recipies",
+  passport.authenticate("jwt", { session: false }),
+  createRecipe
+);
 
 module.exports = router;
