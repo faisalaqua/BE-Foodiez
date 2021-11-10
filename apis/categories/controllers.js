@@ -1,4 +1,5 @@
 const Category = require("../../db/models/Category");
+const Recipe = require("../../db/models/Recipe");
 
 // fetch one category
 exports.fetchCategory = async (req, res) => {
@@ -22,9 +23,29 @@ exports.fetchCategories = async (req, res) => {
 };
 
 // Create category
-exports.createCategory = async (req, res) => {
+exports.createCategory = async (req, res, next) => {
   try {
     const newCategory = await Category.create(req.body);
     return res.status(201).json(newCategory);
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Create Recipe
+exports.createRecipe = async (req, res, next) => {
+  try {
+    req.body.owner = req.user._id;
+    req.body.category = req.params.categoryId;
+    const newRecipe = await Recipe.create(req.body);
+    await Category.findByIdAndUpdate(
+      { _id: req.params.categoryId },
+      {
+        $push: { recipies: newRecipe._id },
+      }
+    );
+    return res.status(201).json(newRecipe);
+  } catch (error) {
+    next(error);
+  }
 };

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const connectDB = require("./db/models/shahaddb");
+const connectDB = require("./db/models/database");
 // const morgan = require("morgan");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
