@@ -35,6 +35,9 @@ exports.createCategory = async (req, res, next) => {
 // Create Recipe
 exports.createRecipe = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+    }
     req.body.owner = req.user._id;
     req.body.category = req.params.categoryId;
     const newRecipe = await Recipe.create(req.body);

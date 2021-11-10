@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const upload = require("../../middleware/multer");
 
 const {
   createCategory,
@@ -22,7 +23,7 @@ const {
 // REVIEW: Why do you need a fetchCategory?
 router.get("/:categoryId", fetchCategory);
 router.get("/", fetchCategories);
-router.post("/", createCategory);
+router.post("/", upload.single("image"), createCategory);
 router.post(
   "/:categoryId/recipies",
   passport.authenticate("jwt", { session: false }),
