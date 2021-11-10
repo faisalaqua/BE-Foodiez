@@ -20,6 +20,7 @@ exports.signup = async (req, res, next) => {
     req.body.password = hashedPassword;
 
     const user = await User.create(req.body);
+    // REVIEW: Remove console logs
     console.log("this is the new use", user);
     const token = generateToken(user);
     return res.status(201).json({ token });
@@ -29,6 +30,7 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signin = async (req, res) => {
+  // REVIEW: Remove console logs
   console.log("exports.signin -> req", req.user);
   const payload = {
     _id: req.user._id,

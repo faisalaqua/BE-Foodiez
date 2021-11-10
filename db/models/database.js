@@ -1,4 +1,5 @@
 // const mongoose = require("mongoose");
+// REVIEW: This should be gitignored
 
 // const connectDB = async () => {
 //   const conn = await mongoose.connect(

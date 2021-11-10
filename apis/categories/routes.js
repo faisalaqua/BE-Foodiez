@@ -16,6 +16,7 @@ const {
 //   }
 // });
 
+// REVIEW: Why do you need a fetchCategory?
 router.get("/:categoryId", fetchCategory);
 router.get("/", fetchCategories);
 router.post("/", createCategory);
