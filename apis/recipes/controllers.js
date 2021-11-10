@@ -18,11 +18,3 @@ exports.fetchRecipes = async (req, res, next) => {
     next(error);
   }
 };
-
-exports.createRecipe = async (req, res) => {
-  try {
-    // req.body.owner = req.user._id;
-    const newRecipe = await Recipe.create(req.body);
-    return res.status(201).json(newRecipe);
-  } catch (error) {}
-};
