@@ -23,10 +23,11 @@ const {
 // REVIEW: Why do you need a fetchCategory?
 router.get("/:categoryId", fetchCategory);
 router.get("/", fetchCategories);
-router.post("/", upload.single("image"), createCategory);
+router.post("/", createCategory);
 router.post(
   "/:categoryId/recipies",
   passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   createRecipe
 );
 

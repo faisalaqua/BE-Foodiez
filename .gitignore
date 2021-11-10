@@ -1,5 +1,5 @@
-../db/models/shahaddb.js
-../db/models/database.js
+shahaddb.js
+database.js
 media
 # Logs
 logs

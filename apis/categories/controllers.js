@@ -15,7 +15,7 @@ exports.fetchCategory = async (req, res) => {
 // fetch all categories
 exports.fetchCategories = async (req, res) => {
   try {
-    const categories = await Category.find(); // NEED TO POPULATE RECIPES!
+    const categories = await Category.find().populate("recipies"); // NEED TO POPULATE RECIPES!
     return res.json(categories);
   } catch (error) {
     return res.status(500).json({ message: error.message });
