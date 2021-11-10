@@ -1,3 +1,7 @@
+
+// const mongoose = require("mongoose");
+// REVIEW: This should be gitignored
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {

@@ -19,6 +19,7 @@ const RecipeSchema = mongoose.Schema(
   }
 );
 
+// REVIEW: Again, this line is for slugs, you actually need a slug for your recipes
 RecipeSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = mongoose.model("Recipe", RecipeSchema);

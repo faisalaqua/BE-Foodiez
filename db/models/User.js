@@ -31,6 +31,7 @@ const UserSchema = mongoose.Schema(
   }
 );
 
+// REVIEW: This line ios for slugs, we dont have slugs for users, remove it please
 UserSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=username%>" });
 
 module.exports = mongoose.model("User", UserSchema);
